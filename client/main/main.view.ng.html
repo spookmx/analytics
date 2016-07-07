@@ -1,0 +1,35 @@
+<div class="main" layout="row">
+  <span flex=""></span>
+  <div layout="column">
+    <h1>Pages</h1>
+    <div layout="row">
+      <md-input-container flex="40">
+        <label>Search</label>
+        <input type="Search" ng-model="search" placeholder="Search">
+      </md-input-container>
+      <md-datepicker ng-model="dateStart" md-placeholder="Start"></md-datepicker>
+      <md-datepicker ng-model="dateEnd" md-placeholder="End"></md-datepicker>
+    </div>
+    <div layout="row">
+      <md-select ng-model="granularity">
+        <md-option value="aggregated">Aggregated</md-option>
+        <md-option value="monthly">Monthly</md-option>
+        <md-option value="daily">Daily</md-option>
+      </md-select>
+      <md-select ng-model="limit">
+        <md-option value=10>10</md-option>
+        <md-option value=50>50</md-option>
+        <md-option value=100>100</md-option>
+      </md-select>
+      <md-button ng-click="getData()">Refresh</md-button>
+    </div>
+
+    <ul>
+      <li ng-repeat="page in pages">
+        <p>{{ page.data[$parent.granularity].date  | date:'mediumDate' }} {{ page.name }} <strong>Views: </strong>{{ page.data[$parent.granularity].pageviews }} <strong>Visitors: </strong>{{ page.data[$parent.granularity].uniquevisitors }} <strong>Visits: </strong>{{ page.data[$parent.granularity].visits }} </p>
+      </li>
+    </ul>
+
+  </div>
+  <span flex=""></span>
+</div>

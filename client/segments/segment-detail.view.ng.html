@@ -1,0 +1,42 @@
+<div class="segment-detail" layout="row">
+  <span flex=""></span>
+  <div layout="column" class="md-whiteframe-z1" layout-padding>
+    <h1>Segment</h1>
+    <form name="form" ng-submit="save()"  layout-padding>
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="segment.name" placeholder="Name">
+      </md-input-container>
+      <md-input-container>
+        <label>Adobe Id</label>
+        <input ng-model="segment.adobeID" placeholder="Adobe Id">
+      </md-input-container>
+      <input class="md-button" type="submit" value="Save">
+    </form>
+    <div layout="row">
+      <md-input-container>
+       <label>Dimension</label>
+       <md-select class="md-select-value-capitalize" ng-model="selectedDimension">
+         <md-option class="md-option-capitalize" ng-repeat="(key, value) in segment.dataStatus" value="{{key}}">
+           {{key}}
+         </md-option>
+       </md-select>
+     </md-input-container>
+     <md-button ng-click="segmentUpdate()">Update</md-button>
+    </div>
+    <div layout="column">
+      <md-list class="md-dense" flex>
+        <md-list-item class="md-2-line" ng-repeat="status in segment.dataStatus[selectedDimension]">
+          <div class="md-list-item-text">
+            <h3>Month: {{ status.date | date:'MMMM, yy'  }}</h3>
+            <p>
+              <strong>Daily:</strong> {{ status.daily == 0 ? 'Not Requested' : status.daily == 1 ? 'Requested' : 'Ready' }}
+              <strong>Monthly:</strong> {{ status.monthly == 0 ? 'Not Requested' : status.monthly == 1 ? 'Requested' : 'Ready' }}
+            </p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+  <span flex=""></span>
+</div>

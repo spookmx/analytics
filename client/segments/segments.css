@@ -1,0 +1,6 @@
+md-option.md-option-capitalize {
+  text-transform: capitalize;
+}
+.md-select-value-capitalize .md-select-value .md-text{
+  text-transform: capitalize;
+}
