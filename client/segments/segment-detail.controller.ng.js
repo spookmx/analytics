@@ -15,7 +15,7 @@ angular.module('analyticsApp')
   $scope.initializeStatus = function(){
     $scope.dateTraverse = moment("2016-01-01");
     $scope.dateToday = moment();
-    $scope.segment.dataStatus = {traffic:[], language:[], pages:[], actions:[], keywords:[], downloads:[] , countries:[]};
+    $scope.segment.dataStatus = {traffic:[], languages:[], pages:[], actions:[], keywords:[], downloads:[] , countries:[]};
     do {
       angular.forEach($scope.segment.dataStatus, function(val, key){
         var element = {date:new Date($scope.dateTraverse.toDate()), monthly: 0, daily: 0};

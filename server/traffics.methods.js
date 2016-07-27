@@ -22,8 +22,6 @@ Meteor.methods({
             id:"event11"
           },{
             id:"event1"
-          },{
-            id:"event34"
           }
         ],
     		segments:[
@@ -86,8 +84,7 @@ Meteor.methods({
                   uniquevisitors: parseInt(v.counts[2]),
                   downloadsinitiated: parseInt(v.counts[3]),
                   downloads: parseInt(v.counts[4]),
-                  internalsearches: parseInt(v.counts[5]),
-                  pageactions: parseInt(v.counts[6])
+                  internalsearches: parseInt(v.counts[5])
               }
             }
           },{
@@ -119,8 +116,6 @@ Meteor.methods({
             id:"event11"
           },{
             id:"event1"
-          },{
-            id:"event34"
           }
         ],
         segments:[
@@ -183,8 +178,7 @@ Meteor.methods({
                   uniquevisitors: parseInt(v.counts[2]),
                   downloadsinitiated: parseInt(v.counts[3]),
                   downloads: parseInt(v.counts[4]),
-                  internalsearches: parseInt(v.counts[5]),
-                  pageactions: parseInt(v.counts[6])
+                  internalsearches: parseInt(v.counts[5])
               }
             }
           },{
