@@ -17,13 +17,13 @@ angular.module('analyticsApp')
       limit: $scope.limit
     };
     Meteor.call( 'pages.getData', options, ( error, response ) => {
-    if ( error ) {
-      console.error(error);
-    } else {
-      console.log(response);
-      $scope.pages = response;
-      $scope.$apply();
-    }
+      if ( error ) {
+        console.error(error);
+      } else {
+        console.log(response);
+        $scope.pages = response;
+        $scope.$apply();
+      }
   });
   };
 

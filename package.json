@@ -5,6 +5,8 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "meteor-node-stubs": "^0.2.3"
+    "meteor-node-stubs": "^0.2.3",
+    "moment": "^2.14.1",
+    "nomniture": "^0.3.9"
   }
 }

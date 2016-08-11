@@ -30,8 +30,8 @@
           <div class="md-list-item-text">
             <h3>Month: {{ status.date | date:'MMMM, yy'  }}</h3>
             <p>
-              <strong>Daily:</strong> {{ status.daily == 0 ? 'Not Requested' : status.daily == 1 ? 'Requested' : 'Ready' }}
-              <strong>Monthly:</strong> {{ status.monthly == 0 ? 'Not Requested' : status.monthly == 1 ? 'Requested' : 'Ready' }}
+              <strong>Daily:</strong> {{ statuses[status.daily] }}
+              <strong>Monthly:</strong> {{ statuses[status.monthly] }}
             </p>
           </div>
         </md-list-item>

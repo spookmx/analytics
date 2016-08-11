@@ -91,6 +91,14 @@ Meteor.methods({
             upsert:true
           });
         });
+        Segments.update({
+          adobeID: adobeID,
+          "dataStatus.traffic.date": new Date(moment(date).toDate())
+        },{
+          $set:{
+            "dataStatus.traffic.$.daily":3
+          }
+        });
       }
     }));
     return r;
@@ -184,6 +192,14 @@ Meteor.methods({
           },{
             upsert:true
           });
+        });
+        Segments.update({
+          adobeID: adobeID,
+          "dataStatus.traffic.date": new Date(moment(date).toDate())
+        },{
+          $set:{
+            "dataStatus.traffic.$.monthly":3
+          }
         });
       }
     }));

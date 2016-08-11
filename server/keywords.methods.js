@@ -122,6 +122,14 @@ Meteor.methods({
             }
           });
         });
+        Segments.update({
+          adobeID: adobeID,
+          "dataStatus.keywords.date": new Date(moment(date).toDate())
+        },{
+          $set:{
+            "dataStatus.keywords.$.daily":3
+          }
+        });
       }
     }));
     return r;
@@ -181,19 +189,29 @@ Meteor.methods({
         });
         response.report.data.forEach(function(d){
           d.breakdown.forEach(function(c){
-            Keywords.update({
-              keyword: c.name
-            },{
-              $addToSet:{
+            if(parseInt(c.counts[0])){
+              Keywords.update({
+                keyword: c.name
+              },{
+                $addToSet:{
                   "data.monthly":{
                     date: new Date(d.year+"-"+d.month+"-"+d.day),
                     searches: parseInt(c.counts[0])
+                  }
                 }
-              }
-            },{
-              upsert:true
-            });
+              },{
+                upsert:true
+              });
+            }
           });
+        });
+        Segments.update({
+          adobeID: adobeID,
+          "dataStatus.keywords.date": new Date(moment(date).toDate())
+        },{
+          $set:{
+            "dataStatus.keywords.$.monthly":3
+          }
         });
       }
     }));

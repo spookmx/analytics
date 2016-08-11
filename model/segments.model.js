@@ -2,12 +2,12 @@ Segments = new Mongo.Collection('segments');
 
 Segments.allow({
   insert: function(userId, segment) {
-    return userId;
+    return true;
   },
   update: function(userId, segment, fields, modifier) {
-    return userId;
+    return true;
   },
   remove: function(userId, segment) {
-    return userId;
+    return true;
   }
 });

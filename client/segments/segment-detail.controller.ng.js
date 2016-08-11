@@ -2,6 +2,7 @@
 
 angular.module('analyticsApp')
 .controller('SegmentDetailCtrl', function($scope, $stateParams) {
+  $scope.statuses = ["Not Requested", "Requested", "Processing", "Ready"];
   $scope.selectedDimension = 'traffic';
   var moment = require('moment');
 
@@ -43,13 +44,15 @@ angular.module('analyticsApp')
   $scope.save = function() {
     if($scope.form.$valid) {
       delete $scope.segment._id;
+      var segmentCopy = {};
+      angular.copy($scope.segment, segmentCopy);
       Segments.update({
         _id: $stateParams.segmentId
       }, {
-        $set: $scope.segment
+        $set: segmentCopy
       }, function(error) {
         if(error) {
-          console.log('Unable to update the segment');
+          console.log(error);
         } else {
           console.log('Segment updated!');
         }

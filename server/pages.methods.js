@@ -103,7 +103,7 @@ Meteor.methods({
     var r = new Report(Meteor.settings.omnitureUser, Meteor.settings.omniturePass, Meteor.settings.omnitureRegion, options);
     r.request("Report.Queue", reportData, Meteor.bindEnvironment(function(err, response){
       if(err){
-        //console.error("Report not ready");
+        console.error(JSON.stringify(err));
         return;
       }else{
         Segments.update({
@@ -133,6 +133,14 @@ Meteor.methods({
               upsert:true
             });
           });
+        });
+        Segments.update({
+          adobeID: adobeID,
+          "dataStatus.pages.date": new Date(moment(date).toDate())
+        },{
+          $set:{
+            "dataStatus.pages.$.daily":3
+          }
         });
       }
     }));
@@ -188,7 +196,7 @@ Meteor.methods({
     var r = new Report(Meteor.settings.omnitureUser, Meteor.settings.omniturePass, Meteor.settings.omnitureRegion, options);
     r.request("Report.Queue", reportData, Meteor.bindEnvironment(function(err, response){
       if(err){
-        //console.error("Report not ready");
+        console.error(JSON.stringify(err));
         return;
       }else{
         Segments.update({
@@ -217,6 +225,14 @@ Meteor.methods({
               upsert:true
             });
           });
+        });
+        Segments.update({
+          adobeID: adobeID,
+          "dataStatus.pages.date": new Date(moment(date).toDate())
+        },{
+          $set:{
+            "dataStatus.pages.$.monthly":3
+          }
         });
       }
     }));
